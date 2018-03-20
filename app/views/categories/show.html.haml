@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%p
+  %b Category Name:
+  = @category.name
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Creation Date
+      %th
+      %th
+
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.title
+        %td= product.description
+        %td= product.created_at
+
+= link_to 'Edit', edit_category_path(@category)
+\|
+= link_to 'Back', categories_path

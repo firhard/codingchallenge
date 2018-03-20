@@ -1,0 +1,22 @@
+= form_for @product do |f|
+  - if @product.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
+      %ul
+        - @product.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :description
+    = f.text_field :description
+
+  .form-tag
+    - @categories.each do |category|
+      %label     
+        = f.check_box :category_ids, {:multiple => true}, category.id, nil
+        = category.name
+  .actions
+    = f.submit 'Save'

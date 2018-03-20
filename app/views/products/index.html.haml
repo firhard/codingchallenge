@@ -1,0 +1,23 @@
+= link_to 'Category Index', categories_path
+%h1 Listing products
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Creation Date
+      %th
+      %th
+
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.title
+        %td= product.description
+        %td= product.created_at
+        %td= link_to 'Details', product
+
+%br
+
+= link_to 'Create Product', new_product_path
