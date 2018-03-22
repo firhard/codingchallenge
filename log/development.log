@@ -7771,3 +7771,1475 @@ Processing by CategoriesController#show as HTML
 Completed 200 OK in 30ms (Views: 26.1ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-03-20 22:32:24 +0000
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (29.7ms)
+Completed 200 OK in 334ms (Views: 296.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-20 22:32:27 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (21.9ms)
+Completed 200 OK in 65ms (Views: 49.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-20 22:32:29 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (6.9ms)
+Completed 200 OK in 44ms (Views: 39.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-20 22:32:31 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (20.9ms)
+Completed 200 OK in 65ms (Views: 55.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2018-03-20 22:32:33 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 1]]
+  Rendered categories/show.html.haml within layouts/application (21.4ms)
+Completed 200 OK in 66ms (Views: 46.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-20 22:32:41 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (18.6ms)
+Completed 200 OK in 60ms (Views: 54.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2018-03-20 22:32:42 +0000
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered products/_form.html.haml (184.8ms)
+  Rendered products/new.html.haml within layouts/application (195.2ms)
+Completed 200 OK in 235ms (Views: 224.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2018-03-20 22:33:00 +0000
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t0HvFpYwF6UFjsNU2/k3w7JH4mlMFgmNGvHToU9OxcE9i9iyjAJrK88hJSu5js+w3Gnpn3kY9T3UPg6pDnTA2A==", "product"=>{"title"=>"Technologies", "description"=>"Technologies", "category_ids"=>["1", "2", "3", "4"]}, "commit"=>"Save"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (1, 2, 3, 4)[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Technologies"], ["description", "Technologies"], ["created_at", "2018-03-20 22:33:00.840030"], ["updated_at", "2018-03-20 22:33:00.840030"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 1], ["product_id", 5]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 2], ["product_id", 5]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 3], ["product_id", 5]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 4], ["product_id", 5]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/products/5
+Completed 302 Found in 38ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/products/5" for 127.0.0.1 at 2018-03-20 22:33:00 +0000
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering products/show.html.haml within layouts/application
+  Rendered products/show.html.haml within layouts/application (4.3ms)
+Completed 200 OK in 57ms (Views: 47.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-20 22:33:03 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (13.1ms)
+Completed 200 OK in 57ms (Views: 50.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-20 22:33:03 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (15.4ms)
+Completed 200 OK in 62ms (Views: 56.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2018-03-20 22:33:04 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 1]]
+  Rendered categories/show.html.haml within layouts/application (22.4ms)
+Completed 200 OK in 72ms (Views: 62.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/categories/2" for 127.0.0.1 at 2018-03-20 22:33:05 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 2]]
+  Rendered categories/show.html.haml within layouts/application (12.4ms)
+Completed 200 OK in 54ms (Views: 46.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories/3" for 127.0.0.1 at 2018-03-20 22:33:07 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 3]]
+  Rendered categories/show.html.haml within layouts/application (7.1ms)
+Completed 200 OK in 40ms (Views: 33.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories/4" for 127.0.0.1 at 2018-03-20 22:33:09 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 4]]
+  Rendered categories/show.html.haml within layouts/application (11.6ms)
+Completed 200 OK in 45ms (Views: 37.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-22 10:57:48 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (13.8ms)
+Completed 200 OK in 273ms (Views: 251.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2018-03-22 10:57:51 +0000
+Processing by CategoriesController#new as HTML
+  Rendering categories/new.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered categories/_form.html.haml (118.0ms)
+  Rendered categories/new.html.haml within layouts/application (122.0ms)
+Completed 200 OK in 156ms (Views: 143.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 10:57:56 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (10.1ms)
+Completed 200 OK in 44ms (Views: 38.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2018-03-22 10:57:57 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 1]]
+  Rendered categories/show.html.haml within layouts/application (10.7ms)
+Completed 200 OK in 50ms (Views: 34.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 10:57:58 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (8.8ms)
+Completed 200 OK in 76ms (Views: 69.0ms | ActiveRecord: 1.4ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "iPhone"], ["description", "iPhone X"], ["created_at", "2018-03-22 13:14:40.578925"], ["updated_at", "2018-03-22 13:14:40.578925"]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Apple"], ["created_at", "2018-03-22 13:14:46.580355"], ["updated_at", "2018-03-22 13:14:46.580355"]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 5], ["product_id", 6]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" INNER JOIN "categories_products" ON "categories"."id" = "categories_products"."category_id" WHERE "categories_products"."product_id" = ? LIMIT ?[0m  [["product_id", 6], ["LIMIT", 11]]
+Started GET "/categories/1" for 127.0.0.1 at 2018-03-22 13:16:22 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 1]]
+  Rendered categories/show.html.haml within layouts/application (22.3ms)
+Completed 200 OK in 279ms (Views: 242.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2018-03-22 13:21:57 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 1]]
+  Rendered categories/show.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 73ms (Views: 67.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 13:21:58 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (7.7ms)
+Completed 200 OK in 51ms (Views: 45.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 13:22:10 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (6.4ms)
+Completed 200 OK in 40ms (Views: 34.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2018-03-22 13:24:37 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 1]]
+  Rendered categories/show.html.haml within layouts/application (11.8ms)
+Completed 200 OK in 57ms (Views: 46.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 13:24:46 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (7.8ms)
+Completed 200 OK in 42ms (Views: 36.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 13:24:46 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (8.3ms)
+Completed 200 OK in 44ms (Views: 39.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 13:24:47 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (7.6ms)
+Completed 200 OK in 49ms (Views: 42.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 13:24:47 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (6.5ms)
+Completed 200 OK in 40ms (Views: 34.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2018-03-22 13:24:48 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 1]]
+  Rendered categories/show.html.haml within layouts/application (8.5ms)
+Completed 200 OK in 40ms (Views: 32.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 13:26:56 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (5.6ms)
+Completed 200 OK in 46ms (Views: 39.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-03-22 15:30:43 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (4.8ms)
+Completed 200 OK in 49ms (Views: 45.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:30:46 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 41ms (Views: 34.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2018-03-22 15:30:48 +0000
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered products/_form.html.haml (149.0ms)
+  Rendered products/new.html.haml within layouts/application (159.2ms)
+Completed 200 OK in 190ms (Views: 183.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2018-03-22 15:31:07 +0000
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lvMpv5lyHzWkpRZm9O5Et2Dp2IEJEHkSqA2Gx0n7c7Znm3SlAXVPjWAmDM2xcfTjdBJ4In2YLfGJvswMsKDuDQ==", "product"=>{"title"=>"HomePod", "description"=>"Homepod", "category_ids"=>["2"]}, "commit"=>"Save"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 2[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "HomePod"], ["description", "Homepod"], ["created_at", "2018-03-22 15:31:07.266734"], ["updated_at", "2018-03-22 15:31:07.266734"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 2], ["product_id", 7]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/products/7
+Completed 302 Found in 17ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/products/7" for 127.0.0.1 at 2018-03-22 15:31:07 +0000
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering products/show.html.haml within layouts/application
+  Rendered products/show.html.haml within layouts/application (2.9ms)
+Completed 200 OK in 33ms (Views: 26.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:31:08 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (15.9ms)
+Completed 200 OK in 59ms (Views: 50.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:31:11 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (7.9ms)
+Completed 200 OK in 40ms (Views: 33.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/2" for 127.0.0.1 at 2018-03-22 15:31:12 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 2]]
+  Rendered categories/show.html.haml within layouts/application (15.2ms)
+Completed 200 OK in 60ms (Views: 51.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:31:15 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (1.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (15.6ms)
+Completed 200 OK in 67ms (Views: 54.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:32:32 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (7.0ms)
+Completed 200 OK in 73ms (Views: 67.3ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/products/1" for 127.0.0.1 at 2018-03-22 15:32:36 +0000
+Processing by ProductsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7R6kF66oZJQ79T5Uz5HevdNlYeX3tFLlTy/49WjLH2Lol3tAYbBSTu57/6GHa+HSCZFUroDhZOoJtmgFCnjMLg==", "id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "categories_products" WHERE "categories_products"."product_id" = ?[0m  [["product_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 1]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 8ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:32:36 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (7.7ms)
+Completed 200 OK in 43ms (Views: 34.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:32:37 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (10.2ms)
+Completed 200 OK in 58ms (Views: 50.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories/2" for 127.0.0.1 at 2018-03-22 15:32:38 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 2]]
+  Rendered categories/show.html.haml within layouts/application (8.7ms)
+Completed 200 OK in 41ms (Views: 32.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories/2" for 127.0.0.1 at 2018-03-22 15:32:42 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 2]]
+  Rendered categories/show.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 40ms (Views: 35.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:32:43 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (14.3ms)
+Completed 200 OK in 72ms (Views: 65.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:32:46 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (14.3ms)
+Completed 200 OK in 61ms (Views: 54.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:32:57 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (22.0ms)
+Completed 200 OK in 79ms (Views: 70.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2018-03-22 15:33:03 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 1]]
+  Rendered categories/show.html.haml within layouts/application (10.9ms)
+Completed 200 OK in 44ms (Views: 36.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:33:09 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (12.3ms)
+Completed 200 OK in 54ms (Views: 49.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2018-03-22 15:33:15 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 1]]
+  Rendered categories/show.html.haml within layouts/application (9.6ms)
+Completed 200 OK in 48ms (Views: 40.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2018-03-22 15:34:08 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 1]]
+  Rendered categories/show.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 31ms (Views: 27.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:34:09 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (10.8ms)
+Completed 200 OK in 46ms (Views: 39.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:34:29 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (4.5ms)
+Completed 200 OK in 31ms (Views: 26.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:34:39 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (3.8ms)
+Completed 200 OK in 32ms (Views: 27.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:34:46 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (8.5ms)
+Completed 200 OK in 42ms (Views: 36.0ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/products/7" for 127.0.0.1 at 2018-03-22 15:34:56 +0000
+Processing by ProductsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8UrKrDFS0A86QAC+lIkuuZV7vJPstXGrnebI6ZfGE1z0wxX7/krm1e/OwUvccxHWT4+J2JvgR6Tbf1gZ9XXAEA==", "id"=>"7"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "categories_products" WHERE "categories_products"."product_id" = ?[0m  [["product_id", 7]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = ?[0m  [["id", 7]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/products
+Completed 302 Found in 8ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:34:56 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (5.7ms)
+Completed 200 OK in 41ms (Views: 33.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:34:59 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (8.8ms)
+Completed 200 OK in 45ms (Views: 38.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories/2" for 127.0.0.1 at 2018-03-22 15:35:01 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 2]]
+  Rendered categories/show.html.haml within layouts/application (8.2ms)
+Completed 200 OK in 42ms (Views: 34.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:35:04 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (9.2ms)
+Completed 200 OK in 61ms (Views: 52.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:35:05 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (17.3ms)
+Completed 200 OK in 57ms (Views: 49.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:38:31 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (8.9ms)
+Completed 200 OK in 46ms (Views: 37.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:38:34 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 54ms (Views: 47.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:38:46 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (4.5ms)
+Completed 200 OK in 46ms (Views: 38.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/categories/3" for 127.0.0.1 at 2018-03-22 15:38:50 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"hSF5CB8NQb0LmwoyGicDNL0JfNf/Dq2U4I17OAw9/NaAqKZf0BV3Z94Vy8dS3TxbZ/1JnIhbm5umFOvIbo4vmg==", "id"=>"3"}
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[31mDELETE FROM "categories_products" WHERE "categories_products"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 3]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories
+Completed 302 Found in 18ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:38:50 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 33ms (Views: 29.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2018-03-22 15:38:52 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 1]]
+  Rendered categories/show.html.haml within layouts/application (8.5ms)
+Completed 200 OK in 48ms (Views: 38.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:39:13 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (10.5ms)
+Completed 200 OK in 47ms (Views: 43.0ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/categories/1" for 127.0.0.1 at 2018-03-22 15:39:17 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+Fzs4grS1EAQzARVjCynOsHyHE0CTvAR+sBlJjeDxsz91TO1xcrimsVCxaDE1phVGwYpBnUbxh68WfXWVTAVgA==", "id"=>"1"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "categories_products" WHERE "categories_products"."category_id" = ?[0m  [["category_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 1]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories
+Completed 302 Found in 8ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:39:17 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 33ms (Views: 28.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/2" for 127.0.0.1 at 2018-03-22 15:39:18 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 2]]
+  Rendered categories/show.html.haml within layouts/application (9.7ms)
+Completed 200 OK in 45ms (Views: 37.6ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/categories/5" for 127.0.0.1 at 2018-03-22 15:40:08 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/2r7FN9dSQxwt6nB2QQTYb5OFXQagbcXLujy/HLxuPT64yRDEEV/1qU5aDSR/iwOZLogP23UgRhocWIMEEJruA==", "id"=>"5"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "categories_products" WHERE "categories_products"."category_id" = ?[0m  [["category_id", 5]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 5]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 178ms (ActiveRecord: 4.8ms)
+
+
+  
+NameError (undefined local variable or method `categories_params' for #<CategoriesController:0x007fbfbd812958>
+Did you mean?  categories_path
+               categories_url
+               category_params):
+  
+app/controllers/categories_controller.rb:62:in `block (2 levels) in destroy'
+app/controllers/categories_controller.rb:61:in `destroy'
+Started DELETE "/categories/5" for 127.0.0.1 at 2018-03-22 15:40:17 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/2r7FN9dSQxwt6nB2QQTYb5OFXQagbcXLujy/HLxuPT64yRDEEV/1qU5aDSR/iwOZLogP23UgRhocWIMEEJruA==", "id"=>"5"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+Completed 404 Not Found in 12ms (ActiveRecord: 1.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Category with 'id'=5):
+  
+app/controllers/categories_controller.rb:70:in `set_category'
+Started DELETE "/categories/5" for 127.0.0.1 at 2018-03-22 15:40:33 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/2r7FN9dSQxwt6nB2QQTYb5OFXQagbcXLujy/HLxuPT64yRDEEV/1qU5aDSR/iwOZLogP23UgRhocWIMEEJruA==", "id"=>"5"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Category with 'id'=5):
+  
+app/controllers/categories_controller.rb:70:in `set_category'
+Started DELETE "/categories/5" for 127.0.0.1 at 2018-03-22 15:40:51 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/2r7FN9dSQxwt6nB2QQTYb5OFXQagbcXLujy/HLxuPT64yRDEEV/1qU5aDSR/iwOZLogP23UgRhocWIMEEJruA==", "id"=>"5"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+Completed 404 Not Found in 9ms (ActiveRecord: 0.8ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Category with 'id'=5):
+  
+app/controllers/categories_controller.rb:70:in `set_category'
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:40:53 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (8.9ms)
+Completed 200 OK in 36ms (Views: 32.1ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/categories/2" for 127.0.0.1 at 2018-03-22 15:40:55 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"J3/Uome+44yK1h0sDC7/WyVWBcvGbWNACeUbudy/oNMi9gv1qKbVVl9Y3NlE1MA0/6IwgLE4VU9PfItJvgxznw==", "id"=>"2"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "categories_products" WHERE "categories_products"."category_id" = ?[0m  [["category_id", 2]]
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 2]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories
+Completed 302 Found in 29ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:40:55 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 33ms (Views: 30.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:41:11 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (9.5ms)
+Completed 200 OK in 43ms (Views: 35.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:41:13 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (18.4ms)
+Completed 200 OK in 61ms (Views: 44.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:41:14 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (7.6ms)
+Completed 200 OK in 44ms (Views: 38.1ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/categories/4" for 127.0.0.1 at 2018-03-22 15:41:17 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"p6IoQMSisztzCWKRMUdgX0dqv8ZOT9UDuLKLkh/9FOWiK/cXC7qF4aaHo2R5vV8wnZ6KjTka4wz+KxtifU7HqQ==", "id"=>"4"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "categories_products" WHERE "categories_products"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 4]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 227ms (ActiveRecord: 4.1ms)
+
+
+  
+NameError (undefined local variable or method `categories_params' for #<CategoriesController:0x007fbfbd0d2120>
+Did you mean?  categories_path
+               categories_url
+               category_params):
+  
+app/controllers/categories_controller.rb:62:in `block (2 levels) in destroy'
+app/controllers/categories_controller.rb:61:in `destroy'
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:41:29 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (4.1ms)
+Completed 200 OK in 31ms (Views: 24.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2018-03-22 15:41:30 +0000
+Processing by CategoriesController#new as HTML
+  Rendering categories/new.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered categories/_form.html.haml (14.2ms)
+  Rendered categories/new.html.haml within layouts/application (18.5ms)
+Completed 200 OK in 59ms (Views: 40.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2018-03-22 15:41:35 +0000
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"P4AconmG6YvlHPG7mutaGVq2u78TqhQ4hIjZMiyRA/nEGcqeGlV4Q69MefVXQklS0dVWWrq6ySiZdGUo2dCA8Q==", "category"=>{"name"=>"Samsung", "product_ids"=>["3", "4", "5"]}, "commit"=>"Save"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" IN (3, 4, 5)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Samsung"], ["created_at", "2018-03-22 15:41:35.540611"], ["updated_at", "2018-03-22 15:41:35.540611"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 6], ["product_id", 3]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 6], ["product_id", 4]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 6], ["product_id", 5]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories/6
+Completed 302 Found in 15ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/categories/6" for 127.0.0.1 at 2018-03-22 15:41:35 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 6]]
+  Rendered categories/show.html.haml within layouts/application (4.7ms)
+Completed 200 OK in 32ms (Views: 25.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:41:41 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (5.6ms)
+Completed 200 OK in 37ms (Views: 31.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2018-03-22 15:41:42 +0000
+Processing by CategoriesController#new as HTML
+  Rendering categories/new.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered categories/_form.html.haml (8.8ms)
+  Rendered categories/new.html.haml within layouts/application (15.2ms)
+Completed 200 OK in 44ms (Views: 38.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2018-03-22 15:41:48 +0000
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Yj6luoGJzxsdYu0Plv6epRps5Rt+7FaoJdLyfbbithyZp3OG4lpe01cyZUFbV43ukQ8I/tf8i7g4Lk5nQ6M1FA==", "category"=>{"name"=>"Apple", "product_ids"=>["2", "5", "6"]}, "commit"=>"Save"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" IN (2, 5, 6)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Apple"], ["created_at", "2018-03-22 15:41:48.037937"], ["updated_at", "2018-03-22 15:41:48.037937"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 7], ["product_id", 2]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 7], ["product_id", 5]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 7], ["product_id", 6]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories/7
+Completed 302 Found in 14ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/categories/7" for 127.0.0.1 at 2018-03-22 15:41:48 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 7]]
+  Rendered categories/show.html.haml within layouts/application (4.5ms)
+Completed 200 OK in 26ms (Views: 22.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:41:49 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 34ms (Views: 28.7ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/categories/6" for 127.0.0.1 at 2018-03-22 15:42:00 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rrVM1kMk7hL5ri+zyhKG0qJ87zPWNHVjiVbLBBsnmMKrPJOBjDzYyCwg7kaC6Lm9eIjaeKFhQ2zPz1v0eZRLjg==", "id"=>"6"}
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[31mDELETE FROM "categories_products" WHERE "categories_products"."category_id" = ?[0m  [["category_id", 6]]
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 6]]
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+Completed 400 Bad Request in 12ms (ActiveRecord: 4.6ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: category):
+  
+app/controllers/categories_controller.rb:75:in `category_params'
+app/controllers/categories_controller.rb:62:in `block (2 levels) in destroy'
+app/controllers/categories_controller.rb:61:in `destroy'
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:42:22 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (7.9ms)
+Completed 200 OK in 32ms (Views: 24.8ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/categories/7" for 127.0.0.1 at 2018-03-22 15:42:23 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0vi++vCdpVY9kIq6eC59hHPPB2+RkSB+s7HttyBWGr3XcWGtP4WTjOgeS08w1ELrqTsyJObEFnH1KH1HQuXJ8Q==", "id"=>"7"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "categories_products" WHERE "categories_products"."category_id" = ?[0m  [["category_id", 7]]
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 7]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories
+Completed 302 Found in 26ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:42:23 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (3.1ms)
+Completed 200 OK in 24ms (Views: 21.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:42:25 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (13.0ms)
+Completed 200 OK in 42ms (Views: 35.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:42:28 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 45ms (Views: 39.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2018-03-22 15:42:28 +0000
+Processing by CategoriesController#new as HTML
+  Rendering categories/new.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered categories/_form.html.haml (7.1ms)
+  Rendered categories/new.html.haml within layouts/application (13.9ms)
+Completed 200 OK in 39ms (Views: 34.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2018-03-22 15:42:33 +0000
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OrIXZkiP6F09lVo0fIh0jgRR26apIEx3pkXwE4en13/BK8FaK1x5lXfF0nqxIWfFjzI2QwAwkWe7uUwJcuZUdw==", "category"=>{"name"=>"Apple", "product_ids"=>["2", "5", "6"]}, "commit"=>"Save"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" IN (2, 5, 6)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Apple"], ["created_at", "2018-03-22 15:42:33.183128"], ["updated_at", "2018-03-22 15:42:33.183128"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 8], ["product_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 8], ["product_id", 5]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 8], ["product_id", 6]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories/8
+Completed 302 Found in 16ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/categories/8" for 127.0.0.1 at 2018-03-22 15:42:33 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 8]]
+  Rendered categories/show.html.haml within layouts/application (4.8ms)
+Completed 200 OK in 30ms (Views: 23.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:42:35 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 46ms (Views: 40.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:42:35 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (10.5ms)
+Completed 200 OK in 44ms (Views: 37.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:42:36 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (6.2ms)
+Completed 200 OK in 55ms (Views: 48.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2018-03-22 15:42:37 +0000
+Processing by CategoriesController#new as HTML
+  Rendering categories/new.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered categories/_form.html.haml (11.4ms)
+  Rendered categories/new.html.haml within layouts/application (17.4ms)
+Completed 200 OK in 50ms (Views: 44.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2018-03-22 15:42:41 +0000
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zNjElz4SHibR5p57VQLKFRmx7eKXiKwCPSVrDMxy4p83QRKrXcGP7pu2FjWYq9lektIABz6YcRIg2dcWOTNhlw==", "category"=>{"name"=>"Samsung", "product_ids"=>["3", "4", "5"]}, "commit"=>"Save"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" IN (3, 4, 5)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Samsung"], ["created_at", "2018-03-22 15:42:41.989261"], ["updated_at", "2018-03-22 15:42:41.989261"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 9], ["product_id", 3]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 9], ["product_id", 4]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 9], ["product_id", 5]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories/9
+Completed 302 Found in 17ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/categories/9" for 127.0.0.1 at 2018-03-22 15:42:42 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 9]]
+  Rendered categories/show.html.haml within layouts/application (6.1ms)
+Completed 200 OK in 33ms (Views: 28.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:42:43 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (8.4ms)
+Completed 200 OK in 40ms (Views: 32.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2018-03-22 15:42:45 +0000
+Processing by CategoriesController#new as HTML
+  Rendering categories/new.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered categories/_form.html.haml (8.3ms)
+  Rendered categories/new.html.haml within layouts/application (15.5ms)
+Completed 200 OK in 49ms (Views: 41.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2018-03-22 15:42:54 +0000
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"V2zbVFbRK/jeET3Q2K37DEQ/hCpSYcRSd8ZwDjAUm+ms9Q1oNQK6MJRBtZ4VBOhHz1xpz/txGUJqOswUxVUY4Q==", "category"=>{"name"=>"Laptop", "product_ids"=>["2", "4"]}, "commit"=>"Save"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" IN (2, 4)[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Laptop"], ["created_at", "2018-03-22 15:42:54.596736"], ["updated_at", "2018-03-22 15:42:54.596736"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 10], ["product_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 10], ["product_id", 4]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories/10
+Completed 302 Found in 15ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/categories/10" for 127.0.0.1 at 2018-03-22 15:42:54 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 10]]
+  Rendered categories/show.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 32ms (Views: 27.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:42:55 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (7.8ms)
+Completed 200 OK in 48ms (Views: 44.1ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/categories/8" for 127.0.0.1 at 2018-03-22 15:42:57 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Gql4eW7FFP5zPah6bIhnqfw2kEhm2tP+MSa0Qdr/MfofIKcuod0iJKazaY8kcljGJsKlAxGP5fF3vySxuEzitg==", "id"=>"8"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "categories_products" WHERE "categories_products"."category_id" = ?[0m  [["category_id", 8]]
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 8]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories
+Completed 302 Found in 13ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:42:57 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 30ms (Views: 26.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2018-03-22 15:43:30 +0000
+Processing by CategoriesController#new as HTML
+  Rendering categories/new.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered categories/_form.html.haml (8.4ms)
+  Rendered categories/new.html.haml within layouts/application (19.2ms)
+Completed 200 OK in 57ms (Views: 48.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2018-03-22 15:43:36 +0000
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"O2CP339gukfD7QpatAVyrnv/DkyvCkLW6mNhLXn0jPTA+VnjHLMrj4m9ghR5rGHl8JzjqQYan8b3n903jLUP/A==", "category"=>{"name"=>"Apple", "product_ids"=>["2", "5", "6"]}, "commit"=>"Save"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" IN (2, 5, 6)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Apple"], ["created_at", "2018-03-22 15:43:36.217212"], ["updated_at", "2018-03-22 15:43:36.217212"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 11], ["product_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 11], ["product_id", 5]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 11], ["product_id", 6]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories/11
+Completed 302 Found in 15ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/categories/11" for 127.0.0.1 at 2018-03-22 15:43:36 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 11]]
+  Rendered categories/show.html.haml within layouts/application (5.7ms)
+Completed 200 OK in 38ms (Views: 33.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:43:38 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (9.2ms)
+Completed 200 OK in 45ms (Views: 38.5ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/categories/9" for 127.0.0.1 at 2018-03-22 15:43:39 +0000
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dWvMzlO/ia7kM5US5DQSghhwRnEv8SDmwkl1Gosjh4lw4hOZnKe/dDG9VOeszi3twoRzOlikFumE0OXq6ZBUxQ==", "id"=>"9"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[31mDELETE FROM "categories_products" WHERE "categories_products"."category_id" = ?[0m  [["category_id", 9]]
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = ?[0m  [["id", 9]]
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories
+Completed 302 Found in 17ms (ActiveRecord: 8.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:43:39 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 37ms (Views: 33.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2018-03-22 15:47:29 +0000
+Processing by CategoriesController#new as HTML
+  Rendering categories/new.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered categories/_form.html.haml (10.6ms)
+  Rendered categories/new.html.haml within layouts/application (15.0ms)
+Completed 200 OK in 46ms (Views: 41.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:47:31 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (8.7ms)
+Completed 200 OK in 50ms (Views: 42.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:47:32 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (9.2ms)
+Completed 200 OK in 44ms (Views: 38.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:48:36 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 60ms (Views: 50.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/categories/10" for 127.0.0.1 at 2018-03-22 15:48:46 +0000
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering categories/show.html.haml within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" INNER JOIN "categories_products" ON "categories_products"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "categories_products"."category_id" WHERE "categories"."id" = ? ORDER BY created_at DESC[0m  [["id", 10]]
+  Rendered categories/show.html.haml within layouts/application (10.2ms)
+Completed 200 OK in 45ms (Views: 37.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:48:55 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (10.2ms)
+Completed 200 OK in 62ms (Views: 54.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2018-03-22 15:48:57 +0000
+Processing by CategoriesController#new as HTML
+  Rendering categories/new.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  Rendered categories/_form.html.haml (6.6ms)
+  Rendered categories/new.html.haml within layouts/application (14.5ms)
+Completed 200 OK in 49ms (Views: 41.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2018-03-22 15:54:34 +0000
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered products/_form.html.haml (7.9ms)
+  Rendered products/new.html.haml within layouts/application (14.4ms)
+Completed 200 OK in 44ms (Views: 39.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 15:55:08 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (8.8ms)
+Completed 200 OK in 51ms (Views: 43.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:55:28 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (1.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (11.8ms)
+Completed 200 OK in 53ms (Views: 43.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 15:55:58 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (6.9ms)
+Completed 200 OK in 33ms (Views: 29.2ms | ActiveRecord: 0.5ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20180320141301)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180320141301"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCategories (20180320145236)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180320145236"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateJoinTableCategoryProduct (20180320160345)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "categories_products" ("category_id" integer NOT NULL, "product_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_categories_products_on_category_id_and_product_id" ON "categories_products" ("category_id", "product_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_categories_products_on_category_id_and_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_categories_products_on_category_id_and_product_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_categories_products_on_product_id_and_category_id" ON "categories_products" ("product_id", "category_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180320160345"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-03-22 16:14:53.699890"], ["updated_at", "2018-03-22 16:14:53.699890"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_categories_products_on_product_id_and_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_categories_products_on_product_id_and_category_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_categories_products_on_category_id_and_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_categories_products_on_category_id_and_product_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "iPhoneX"], ["description", "Latest iPhone"], ["created_at", "2018-03-22 16:14:53.743024"], ["updated_at", "2018-03-22 16:14:53.743024"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Galaxy S9"], ["description", "Latest Galaxy"], ["created_at", "2018-03-22 16:14:53.747529"], ["updated_at", "2018-03-22 16:14:53.747529"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Macbook Pro"], ["description", "Best Macbook"], ["created_at", "2018-03-22 16:14:53.750827"], ["updated_at", "2018-03-22 16:14:53.750827"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Dell XPS 13"], ["description", "Windows Laptop"], ["created_at", "2018-03-22 16:14:53.753912"], ["updated_at", "2018-03-22 16:14:53.753912"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Phone"], ["created_at", "2018-03-22 16:14:53.772813"], ["updated_at", "2018-03-22 16:14:53.772813"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Apple"], ["created_at", "2018-03-22 16:14:53.775225"], ["updated_at", "2018-03-22 16:14:53.775225"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Laptop"], ["created_at", "2018-03-22 16:14:53.778031"], ["updated_at", "2018-03-22 16:14:53.778031"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 1], ["product_id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 2], ["product_id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 1], ["product_id", 2]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 2], ["product_id", 3]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20180320141301)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180320141301"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateCategories (20180320145236)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180320145236"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateJoinTableCategoryProduct (20180320160345)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "categories_products" ("category_id" integer NOT NULL, "product_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_categories_products_on_category_id_and_product_id" ON "categories_products" ("category_id", "product_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_categories_products_on_category_id_and_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_categories_products_on_category_id_and_product_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_categories_products_on_product_id_and_category_id" ON "categories_products" ("product_id", "category_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180320160345"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-03-22 16:15:27.430348"], ["updated_at", "2018-03-22 16:15:27.430348"]]
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_categories_products_on_product_id_and_category_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_categories_products_on_product_id_and_category_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_categories_products_on_category_id_and_product_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_categories_products_on_category_id_and_product_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "iPhoneX"], ["description", "Latest iPhone"], ["created_at", "2018-03-22 16:15:27.479835"], ["updated_at", "2018-03-22 16:15:27.479835"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Galaxy S9"], ["description", "Latest Galaxy"], ["created_at", "2018-03-22 16:15:27.482881"], ["updated_at", "2018-03-22 16:15:27.482881"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Macbook Pro"], ["description", "Best Macbook"], ["created_at", "2018-03-22 16:15:27.489873"], ["updated_at", "2018-03-22 16:15:27.489873"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Dell XPS 13"], ["description", "Windows Laptop"], ["created_at", "2018-03-22 16:15:27.493009"], ["updated_at", "2018-03-22 16:15:27.493009"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Phone"], ["created_at", "2018-03-22 16:15:27.515919"], ["updated_at", "2018-03-22 16:15:27.515919"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Apple"], ["created_at", "2018-03-22 16:15:27.519698"], ["updated_at", "2018-03-22 16:15:27.519698"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Laptop"], ["created_at", "2018-03-22 16:15:27.522422"], ["updated_at", "2018-03-22 16:15:27.522422"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 1], ["product_id", 1]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 2], ["product_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 1], ["product_id", 2]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 2], ["product_id", 3]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 3], ["product_id", 3]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories_products" ("category_id", "product_id") VALUES (?, ?)[0m  [["category_id", 3], ["product_id", 4]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/products" for 127.0.0.1 at 2018-03-22 16:15:40 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (22.8ms)
+Completed 200 OK in 269ms (Views: 245.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 16:15:43 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (17.2ms)
+Completed 200 OK in 67ms (Views: 53.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2018-03-22 16:15:45 +0000
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY created_at DESC[0m
+  Rendered products/index.html.haml within layouts/application (54.3ms)
+Completed 200 OK in 89ms (Views: 82.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2018-03-22 16:15:45 +0000
+Processing by CategoriesController#index as HTML
+  Rendering categories/index.html.haml within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendered categories/index.html.haml within layouts/application (18.2ms)
+Completed 200 OK in 67ms (Views: 61.2ms | ActiveRecord: 0.4ms)
+
+

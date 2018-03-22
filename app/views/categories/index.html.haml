@@ -1,3 +1,4 @@
+%p#notice= notice
 
 = link_to 'Product Index', products_path
 
@@ -9,16 +10,13 @@
       %th Id
       %th Name
       %th
-      %th
-      %th
-      %th
 
   %tbody
     - @categories.each do |category|
       %tr
         %td= category.id
-        %td= category.name
-        %td= link_to 'Products', category
+        %td= link_to category.name, category
+        %td= link_to 'Delete ' + category.name, category, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger'
 
 %br
 
