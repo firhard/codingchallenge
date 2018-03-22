@@ -53,7 +53,6 @@ rspec spec/
 ```
 
 End-To-End testing that has been created is in spec/features.
-Unit testing that has been created is in spec/lib.
 
 ## To check input of the Database
 
