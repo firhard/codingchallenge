@@ -8,6 +8,7 @@ What things you need to install the software and how to install them
 
 Ruby (2.3 or above)
 Ruby on Rails Framework (used 5)
+Ruby Gems
 
 ## Database Initialization
 
@@ -16,6 +17,16 @@ To initialize the database
 ```
 rake db:create db:migrate
 ```
+
+## Running the Server
+
+To run the database
+
+```
+rails s
+```
+
+To stop the server '⌘ + C' or 'Ctrl + C'
 
 ## Seeding Database
 
@@ -41,9 +52,9 @@ To run the test that is being generated
 rspec spec/
 ```
 
-## Deployment
+## To check input of the Database
 
-Add additional notes about how to deploy this on a live system
+In order to check what is inside the database, please download [SQLite Browser](http://sqlitebrowser.org/)
 
 ## Built With
 
