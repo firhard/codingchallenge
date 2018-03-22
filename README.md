@@ -1,6 +1,6 @@
 # Coding Challenge by Mumsnet
 
-The requirement of the project is to create a website that could relats Products and their own Categories.
+The requirement of the project is to create a website that could relate Products and it's own Categories.
 
 ### Prerequisites
 
@@ -46,11 +46,14 @@ rake db:drop
 
 ## Running the RSpecs tests
 
-To run the test that is being generated
+To run the test that is being generated.
 
 ```
 rspec spec/
 ```
+
+End-To-End testing that has been created is in spec/features
+Unit testing that has been created is in spec/lib
 
 ## To check input of the Database
 
